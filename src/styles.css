@@ -60,7 +60,7 @@ body {
   z-index: 1;
 }
 
-.player1::before, .player2::before {
+.cell.player1::before, .cell.player2::before {
   content: attr(data-player);
   position: absolute;
   color: white;
@@ -69,7 +69,7 @@ body {
   z-index: 2;
 }
 
-.player1::after, .player2::after {
+.cell.player1::after, .cell.player2::after {
   content: '';
   position: absolute;
   width: 35px;
@@ -82,11 +82,11 @@ body {
   z-index: -1;
 }
 
-.player1::after {
+.cell.player1::after {
   background: #1976d2;
 }
 
-.player2::after {
+.cell.player2::after {
   background: #d32f2f;
 }
 .board-wrapper {
@@ -158,38 +158,24 @@ body {
   margin-top: 16px;
   font-size: 1.5rem;
   font-weight: bold;
+  color: #1976d2;
+  z-index: 50;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .winner.player1 {
-  margin-top: 16px;
-  font-size: 1.5rem;
-  font-weight: bold;
   color: #1976d2;
-  z-index: 100;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .winner.player2 {
-  margin-top: 16px;
-  font-size: 1.5rem;
-  font-weight: bold;
   color: #d32f2f;
-  z-index: 100;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 button {
   padding: 8px 16px;
