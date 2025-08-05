@@ -224,7 +224,6 @@ function setupEventHandlers(state) {
     });
 }
 function handleSquareClick(state, x, y) {
-    console.log(`Cell clicked: (${x}, ${y})`);
     if (state.winner || state.isWallMode || state.wallPreview)
         return;
     const currentPlayer = state.players[state.currentPlayer];
@@ -249,8 +248,10 @@ function handleSquareClick(state, x, y) {
     }
 }
 function handleWallClick(state, x, y) {
-    console.log(`Wall intersection clicked: (${x}, ${y})`);
     if (state.winner || !state.isWallMode)
+        return;
+    const existingWall = state.walls.find(w => w.x === x && w.y === y);
+    if (existingWall)
         return;
     const currentPlayer = state.players[state.currentPlayer];
     if (currentPlayer.walls <= 0)
@@ -264,8 +265,10 @@ function handleWallClick(state, x, y) {
     render(state);
 }
 function handleWallRightClick(state, x, y) {
-    console.log(`Wall intersection right-clicked: (${x}, ${y})`);
     if (state.winner || !state.isWallMode || !state.wallPreview)
+        return;
+    const existingWall = state.walls.find(w => w.x === x && w.y === y);
+    if (existingWall)
         return;
     const currentPlayer = state.players[state.currentPlayer];
     if (currentPlayer.walls <= 0)
